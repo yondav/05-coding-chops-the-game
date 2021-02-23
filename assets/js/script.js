@@ -96,6 +96,8 @@ var timer;
 // question variables
 var randomQuestion;
 var currentQuestion;
+var questionCount;
+var questionNum = document.querySelector(".question-number");
 var questionEl = document.getElementById("question");
 var submitBtn = document.querySelector(".submit-btn");
 
@@ -109,6 +111,7 @@ function startGame() {
     // console.log("i'm starting");
     pageChangeOne();
     timerCount = 60;
+    questionCount = 0;
     randomQuestion = questions.sort(() => Math.random() - .5);
     currentQuestion = 0;
     startTimer();
@@ -158,6 +161,8 @@ function resetState() {
 }
 
 function showQuestion(question) {
+    questionCount++;
+    questionNum.textContent = "0" + questionCount;
     questionEl.textContent = question.question;
     choiceA.textContent = question.choiceA;
     choiceB.textContent = question.choiceB;
