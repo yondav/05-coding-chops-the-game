@@ -195,6 +195,7 @@ Results Page
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
     width: 11rem;
     height: 11rem;
     font-family: var(--fnt-title);
