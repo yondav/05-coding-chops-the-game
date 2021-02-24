@@ -65,11 +65,9 @@ p {
 }
 
 .container {
-    /* position: absolute; */
     margin: 0 auto;
     padding: 10px;
     width: 75vw;
-    /* height: 75vh; */
     border-radius: 5px;
     box-shadow: 0 0 8px 2px #333;
 }
@@ -113,9 +111,6 @@ Question Card
     justify-content: space-between;
     margin: 0 auto;
     width: 90%;
-}
-
-.status-grid div {
     text-align: center;
 }
 
@@ -123,6 +118,7 @@ Question Card
     margin: 0;
     padding: 0;
 }
+
 .status-bar span {
     font-family: var(--fnt-title);
     font-size: 1.5rem;

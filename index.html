@@ -41,19 +41,17 @@
                     </div>
                     </div>
                 </div>
-                <div>
-                    <span class="question-number">01</span>
-                </div>
+                <span class="question-number">01</span>
                 <!-- question content -->
                 <div id="question-container">
                     <!-- question -->
                     <div id="question">What is JavaScript Code called by using?</div>
                     <!-- answers -->
                     <div id="answer-buttons" class="btn-container">
-                        <button class="btn choice-a">RMI</button>
-                        <button class="btn choice-b">Triggering Event</button>
-                        <button class="btn choice-c">Preprocessor</button>
-                        <button class="btn choice-d">Function/Method</button>
+                        <button data-choice="0" class="btn answer-btn choice-a">RMI</button>
+                        <button data-choice="1" class="btn answer-btn choice-b">Triggering Event</button>
+                        <button data-choice="2" class="btn answer-btn choice-c">Preprocessor</button>
+                        <button data-choice="3" class="btn answer-btn choice-d">Function/Method</button>
                     </div>
                     <button class="btn submit-btn">Submit</button>
                 </div>
@@ -76,5 +74,6 @@
         </div>
     </main>
     <script src="./assets/js/script.js"></script>        
+    <!-- <script src="./assets/js/app.js"></script> -->
 </body>
 </html>
