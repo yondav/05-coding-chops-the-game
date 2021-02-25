@@ -133,7 +133,7 @@ var timer;
 
 // question variables
 var randomQuestion;
-var currentQuestion = 0;
+var currentQuestion;
 var questionCount;
 var questionNum = document.querySelector(".question-number");
 var questionEl = document.getElementById("question");
@@ -217,7 +217,8 @@ function resetState() {
 
 answerBtns.addEventListener('click', function(event) {
     var target = event.target;
-    // console.log(event.target.dataset);
+    console.dir(event.target.dataset);
+    console.log(parseInt(event.target.dataset.choice));
 
     if (target.matches('button')) {
         answer = target.dataset.choice;
@@ -225,13 +226,15 @@ answerBtns.addEventListener('click', function(event) {
             submitBtn.classList.toggle('hide')
         }
     }
-
-    for(var i = 0; i < questions.length; i++) {
-        var response = target.dataset.choice[i];
-        if(response === randomQuestion[currentQuestion].isCorrectAnswer) {
-            console.log("jesus");
-        }
+    if (parseInt(event.target.dataset.choice) === question.correctAnswer) {
+        console.log("yes");
     }
+    // for(var i = 0; i < questions.length; i++) {
+    //     var response = target.dataset.choice[i];
+    //     if(response === randomQuestion[currentQuestion].isCorrectAnswer) {
+    //         // console.log("jesus");
+    //     }
+    // }
     // if (target.dataset.choice === this.correctAnswer) {
     //     console.log("correct");
     // };
