@@ -210,7 +210,7 @@ function resetState() {
 
 answerBtns.addEventListener('click', function(event) {
     var target = event.target;
-    console.dir(event.target.dataset);
+    // console.dir(event.target.dataset);
     // console.log(parseInt(event.target.dataset.choice));
 
     if (target.matches('button')) {
@@ -232,11 +232,21 @@ answerBtns.addEventListener('click', function(event) {
 });
 
 submitBtn.addEventListener('click', function() {
-    if (localStorage.getItem("selectedAnswer")) {
-        score += 5;
-    } else {
-        // run logic for incorrect answer
+    var getStorage = localStorage.getItem("selectedAnswer");
+    
+    if (getStorage === "right") {
+        console.log("y");
+        score += 10;
+        scoreBoard.textContent = score;
+
+    } 
+    else {
+        console.log("n");
+        timerCount -= 5;
+        secondsLeft.textContent = timerCount;
     };
+        localStorage.clear();
+        setNextQuestion(currentQuestion++);
 });
 
 
