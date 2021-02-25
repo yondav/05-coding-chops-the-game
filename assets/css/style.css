@@ -35,7 +35,6 @@ h1,
 h2,
 h3 {
     text-align: center;
-
     font-family: var(--fnt-title);
 }
 
@@ -156,17 +155,7 @@ Question Card
     transform: translateY(-5px);
 }
 
-.btn-correct {
-    color: var(--clr-primary-dark);
-    background-color: var(--clr-correct);
-}
-
-.btn-wrong {
-    color: var(--clr-primary-dark);
-    background-color: var(--clr-wrong);
-}
-
-.submit-btn {
+.next-btn {
     padding: .5rem;
     width: 100%;
     font-weight: 700;
@@ -191,7 +180,7 @@ Results Page
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin: 1rem auto;
     width: 11rem;
     height: 11rem;
     font-family: var(--fnt-title);
@@ -199,7 +188,7 @@ Results Page
     color: var(--clr-primary-light);
     border-radius: 50%;
     background-color: var(--clr-primary-purple);
-    box-shadow: 0 0 8px 2px #333;
+    box-shadow: 0 0 3px 1px #333;
 }
 
 .score {
@@ -207,12 +196,56 @@ Results Page
 }
 
 #high-score-input {
-    display: grid;
-    grid-template-columns: repeat(2,auto);
+    margin: 1.5rem auto;
+}
+
+#high-score-input .form-flex {
+    display: flex;
     justify-content: space-between;
-    row-gap: .66rem;
-    width: 90%;
-    margin: 0 auto;
+    align-items: center;
+    width: 100%;
+}
+
+#high-score-input label {
+    margin-right: 10px;
+    white-space: nowrap;
+    font-family: var(--fnt-title);
+    font-size: 1.6rem;
+}
+
+#high-score-input input {
+    flex-grow: 1;
+    height: 3rem;
+    border-radius: 5px;
+    border: 1px solid var(--clr-primary-dark);
+    box-shadow: 0 0 3px 0 #333;
+    font-family: var(--fnt-primary);
+    /* font-size: 1.6rem; */
+}
+
+#high-score-input input:active,
+#high-score-input input:focus {
+    outline: none;
+    background-color: rgba(138, 43, 226, .15);
+    box-shadow: 0 0 8px 0 #333;
+}
+
+.submit {
+    padding: 1rem;
+    font-size: 0.875rem;
+    border-radius: 5px;
+    outline: none;
+    background-color: none;
+    border: 2px solid var(--clr-primary-dark);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.submit:hover,
+.submit:focus,
+.submit:active {
+    color: var(--clr-primary-light);
+    background-color: var(--clr-primary-purple);
+    /* transform: translateY(-5px); */
 }
 
 .hide {

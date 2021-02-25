@@ -1,4 +1,3 @@
-// questions array
 var questions = [
 {
     id: 01,
@@ -113,39 +112,30 @@ var questions = [
 },
 ];
 
-var start = document.getElementById("start-btn"); //grab start button
-var secondsLeft = document.querySelector(".time"); // grab span holding time value
-var container = document.querySelectorAll(".container"); // grab the container class that holds every page
-var scoreBoard = document.querySelector(".score"); // grab span holding score value
-
-//score
 var score;
-
-// timer variables
 var timerCount;
 var timer;
-
-// question variables
 var randomQuestion;
 var currentQuestion;
 var questionCount = 0;
+
+var start = document.getElementById("start-btn");
+var secondsLeft = document.querySelector(".time");
+var container = document.querySelectorAll(".container");
+var scoreBoard = document.querySelector(".score");
 var questionNum = document.querySelector(".question-number");
 var questionEl = document.getElementById("question");
-var submitBtn = document.querySelector(".submit-btn");
+var nextBtn = document.querySelector(".next-btn");
 var answerBtns = document.querySelector('#answer-buttons');
-
 var choiceA = document.querySelector(".choice-a");
 var choiceB = document.querySelector(".choice-b");
 var choiceC = document.querySelector(".choice-c");
 var choiceD = document.querySelector(".choice-d");
 var selectedAnswer = document.querySelectorAll(".answer-btn");
+var result = document.querySelector(".result");
 
-var answer;
 
-
-//declares startGame function
 function startGame() {
-    // console.log("i'm starting");
     pageChangeOne();
     score = 0;
     scoreBoard.textContent = score;
@@ -158,7 +148,6 @@ function startGame() {
 
 function pageChangeOne() {
     container.forEach(function(containers) {
-        // console.log(containers);
         if(containers.classList.contains("one")) {
             containers.classList.add("hide");
         }
@@ -172,7 +161,7 @@ function startTimer() {
     timer = setInterval(function() {
         timerCount--;
         secondsLeft.textContent = timerCount;
-        if (timerCount === 0) {
+        if (timerCount === 0 || questionCount === questions.length + 1) {
             clearInterval(timer);
             container.forEach(function(containers) {
                 if(containers.classList.contains("two")) {
@@ -192,6 +181,9 @@ function startTimer() {
 function showQuestion(question) {
     questionCount++;
     questionNum.textContent = "0" + questionCount;
+    if (questionCount > 9) {
+        questionNum.textContent = questionCount;
+    }
     questionEl.textContent = question.question;
     choiceA.textContent = question.choices[0];
     choiceB.textContent = question.choices[1];
@@ -205,23 +197,17 @@ function setNextQuestion() {
 };
 
 function resetState() {
-    submitBtn.classList.toggle("hide");
+    nextBtn.classList.toggle("hide");
 };
 
 answerBtns.addEventListener('click', function(event) {
     var target = event.target;
-    // console.dir(event.target.dataset);
-    // console.log(parseInt(event.target.dataset.choice));
-
     if (target.matches('button')) {
-        answer = target.dataset.choice;
-        if ( submitBtn.classList.contains('hide') ) {
-            submitBtn.classList.toggle('hide')
+        answer = event.target.dataset.choice;
+        if ( nextBtn.classList.contains('hide') ) {
+            nextBtn.classList.toggle('hide')
         }
-
-        // console.log(parseInt(event.target.dataset.choice))
-        // console.log(questions[currentQuestion].correctAnswer);
-        if (parseInt(event.target.dataset.choice) === questions[currentQuestion].correctAnswer) {
+        if (parseInt(answer) === questions[currentQuestion].correctAnswer) {
             localStorage.setItem("selectedAnswer", "right");
  
         }
@@ -231,23 +217,28 @@ answerBtns.addEventListener('click', function(event) {
     }
 });
 
-submitBtn.addEventListener('click', function() {
+nextBtn.addEventListener('click', function() {
     var getStorage = localStorage.getItem("selectedAnswer");
     
     if (getStorage === "right") {
         console.log("y");
         score += 10;
         scoreBoard.textContent = score;
-
     } 
     else {
         console.log("n");
         timerCount -= 5;
         secondsLeft.textContent = timerCount;
     };
+        setTimeout(function() {
+        result.textContent = score + "%";
         localStorage.clear();
         setNextQuestion(currentQuestion++);
+    },600);
 });
+
+// results page
+
 
 
 start.addEventListener("click", startGame);
