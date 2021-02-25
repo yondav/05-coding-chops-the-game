@@ -9,8 +9,7 @@ var questions = [
         "This results in an exception", 
         "The omitted value takes an integer value",
     ],
-    correctAnswer: 0,
-    isCorrectAnswer: isCorrect
+    correctAnswer: 0
 },
 {
     id: 02,
@@ -22,8 +21,7 @@ var questions = [
         "None of the above",
     ],
 
-    correctAnswer: 2,
-    isCorrectAnswer: isCorrect
+    correctAnswer: 2
 },
 {
     id: 03,
@@ -34,8 +32,7 @@ var questions = [
         "Both of the above",
         "None of the above",
     ],
-    correctAnswer: 2,
-    isCorrectAnswer: isCorrect
+    correctAnswer: 2
 },
 {
     id: 04,
@@ -46,8 +43,7 @@ var questions = [
         "toFixed()", 
         "toExponential()",
     ],
-    correctAnswer: 3,
-    isCorrectAnswer: isCorrect
+    correctAnswer: 3
 },
 {
     id: 05,
@@ -58,8 +54,7 @@ var questions = [
         "toLocalString()", 
         "toPrecision()",
     ],
-    correctAnswer: 1,
-    isCorrectAnswer: isCorrect
+    correctAnswer: 1
 },
 {
     id: 06,
@@ -70,8 +65,7 @@ var questions = [
         "reduce()", 
         "reduceRight()",
     ],
-    correctAnswer: 3,
-    isCorrectAnswer: isCorrect
+    correctAnswer: 3
 },
 {
     id: 07,
@@ -82,8 +76,7 @@ var questions = [
         "default",
         "try", 
     ],
-       correctAnswer: 2,
-       isCorrectAnswer: isCorrect
+       correctAnswer: 2
 },
 {
     id: 08,
@@ -94,8 +87,7 @@ var questions = [
         "Math.min(xy)", 
         "min(xy)",
     ],
-    correctAnswer: 1,
-    isCorrectAnswer: isCorrect
+    correctAnswer: 1
 },
 {
     id: 09,
@@ -106,8 +98,7 @@ var questions = [
         "msgAlert('Hello DataFlair!');", 
         "alert('Hellow DataFlair');",
     ],
-    correctAnswer: 3,
-    isCorrectAnswer: isCorrect
+    correctAnswer: 3
 },
 {
     id: 10,
@@ -118,14 +109,17 @@ var questions = [
         "Both",
         "Neither", 
     ],    
-    correctAnswer: 2,
-    isCorrectAnswer: isCorrect
+    correctAnswer: 2
 },
 ];
 
 var start = document.getElementById("start-btn"); //grab start button
 var secondsLeft = document.querySelector(".time"); // grab span holding time value
 var container = document.querySelectorAll(".container"); // grab the container class that holds every page
+var scoreBoard = document.querySelector(".score"); // grab span holding score value
+
+//score
+var score;
 
 // timer variables
 var timerCount;
@@ -134,7 +128,7 @@ var timer;
 // question variables
 var randomQuestion;
 var currentQuestion;
-var questionCount;
+var questionCount = 0;
 var questionNum = document.querySelector(".question-number");
 var questionEl = document.getElementById("question");
 var submitBtn = document.querySelector(".submit-btn");
@@ -147,16 +141,15 @@ var choiceD = document.querySelector(".choice-d");
 var selectedAnswer = document.querySelectorAll(".answer-btn");
 
 var answer;
-var isCorrect = function() {
-    return parseInt(answer) === this.correctAnswer
-};
+
 
 //declares startGame function
 function startGame() {
     // console.log("i'm starting");
     pageChangeOne();
+    score = 0;
+    scoreBoard.textContent = score;
     timerCount = 60;
-    questionCount = 0;
     randomQuestion = questions.sort(() => Math.random() - .5);
     currentQuestion = 0;
     startTimer();
@@ -218,36 +211,29 @@ function resetState() {
 answerBtns.addEventListener('click', function(event) {
     var target = event.target;
     console.dir(event.target.dataset);
-    console.log(parseInt(event.target.dataset.choice));
+    // console.log(parseInt(event.target.dataset.choice));
 
     if (target.matches('button')) {
         answer = target.dataset.choice;
         if ( submitBtn.classList.contains('hide') ) {
             submitBtn.classList.toggle('hide')
         }
+
+        // console.log(parseInt(event.target.dataset.choice))
+        // console.log(questions[currentQuestion].correctAnswer);
+        if (parseInt(event.target.dataset.choice) === questions[currentQuestion].correctAnswer) {
+            localStorage.setItem("selectedAnswer", "right");
+ 
+        }
+        else {
+            localStorage.setItem("selectedAnswer", "wrong");
+        }
     }
-    if (parseInt(event.target.dataset.choice) === question.correctAnswer) {
-        console.log("yes");
-    }
-    // for(var i = 0; i < questions.length; i++) {
-    //     var response = target.dataset.choice[i];
-    //     if(response === randomQuestion[currentQuestion].isCorrectAnswer) {
-    //         // console.log("jesus");
-    //     }
-    // }
-    // if (target.dataset.choice === this.correctAnswer) {
-    //     console.log("correct");
-    // };
 });
 
-// selectedAnswer.addEventListener("click", function(buttons) {
-//     var selection = buttons.target.dataset;
-//     console.log(selection);
-// });
-
 submitBtn.addEventListener('click', function() {
-    if (randomQuestion[currentQuestion].isCorrectAnswer()) {
-        // correct answer logic
+    if (localStorage.getItem("selectedAnswer")) {
+        score += 5;
     } else {
         // run logic for incorrect answer
     };
