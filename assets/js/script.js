@@ -133,6 +133,12 @@ var choiceC = document.querySelector(".choice-c");
 var choiceD = document.querySelector(".choice-d");
 var selectedAnswer = document.querySelectorAll(".answer-btn");
 
+var contrastToggle = document.getElementById("contrast");
+var body = document.querySelector("body");
+
+contrastToggle.addEventListener("click", function() {
+    body.classList.toggle("dark");
+});
 
 
 
