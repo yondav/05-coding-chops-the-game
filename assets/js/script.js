@@ -217,6 +217,7 @@ function resetState() {
 
 answerBtns.addEventListener('click', function(event) {
     var target = event.target;
+    // console.log(event.target.dataset);
 
     if (target.matches('button')) {
         answer = target.dataset.choice;
@@ -224,16 +225,30 @@ answerBtns.addEventListener('click', function(event) {
             submitBtn.classList.toggle('hide')
         }
     }
-})
 
+    for(var i = 0; i < questions.length; i++) {
+        var response = target.dataset.choice[i];
+        if(response === randomQuestion[currentQuestion].isCorrectAnswer) {
+            console.log("jesus");
+        }
+    }
+    // if (target.dataset.choice === this.correctAnswer) {
+    //     console.log("correct");
+    // };
+});
+
+// selectedAnswer.addEventListener("click", function(buttons) {
+//     var selection = buttons.target.dataset;
+//     console.log(selection);
+// });
 
 submitBtn.addEventListener('click', function() {
     if (randomQuestion[currentQuestion].isCorrectAnswer()) {
         // correct answer logic
     } else {
         // run logic for incorrect answer
-    }
-})
+    };
+});
 
 
 start.addEventListener("click", startGame);
