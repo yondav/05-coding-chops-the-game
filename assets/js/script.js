@@ -132,7 +132,9 @@ var choiceB = document.querySelector(".choice-b");
 var choiceC = document.querySelector(".choice-c");
 var choiceD = document.querySelector(".choice-d");
 var selectedAnswer = document.querySelectorAll(".answer-btn");
-var result = document.querySelector(".result");
+
+
+
 
 
 function startGame() {
@@ -238,7 +240,42 @@ nextBtn.addEventListener('click', function() {
 });
 
 // results page
+var result = document.querySelector(".result");
+var userInput = document.querySelector(".name-input"); //grabs input field
+var submitBtn = document.querySelector(".submit"); // grabs submit button
+var highScoreForm = document.getElementById("high-score-input"); //grabs entire form
+var highScoreList = document.getElementById("high-score-list"); //grabs empty ul
+var highScoresArray = []; //creates empty array for each score to be added to
 
+var liMaker = function(text) {
+    var li = document.createElement("li");
+    li.textContent = text + " " + score + "%";
+    highScoreList.appendChild(li);
+};
 
+highScoreForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    highScoresArray.push(userInput.value);
+    localStorage.setItem("High Scores", JSON.stringify(highScoresArray));
+    liMaker(userInput.value);
+    userInput.value = "";
+});
+
+localStorage.setItem("High Scores", JSON.stringify(highScoresArray));
+var data = JSON.parse(localStorage.getItem("High Scores"));
+
+data.forEach(function(highscore) {
+    liMaker(highscore);
+});
+
+// var highScores;
+
+// if(localStorage.getItem("High Scores")) {
+//     highScores = JSON.parse(localStorage.getItem("High Scores"));
+// }
+// else {
+//     highScores = [];
+// }
 
 start.addEventListener("click", startGame);

@@ -220,7 +220,6 @@ Results Page
     border: 1px solid var(--clr-primary-dark);
     box-shadow: 0 0 3px 0 #333;
     font-family: var(--fnt-primary);
-    /* font-size: 1.6rem; */
 }
 
 #high-score-input input:active,
@@ -245,7 +244,6 @@ Results Page
 .submit:active {
     color: var(--clr-primary-light);
     background-color: var(--clr-primary-purple);
-    /* transform: translateY(-5px); */
 }
 
 .hide {
