@@ -136,10 +136,12 @@ var selectedAnswer = document.querySelectorAll(".answer-btn");
 var contrastToggle = document.getElementById("contrast");
 var body = document.querySelector("body");
 
+// for day/night view toggle
 contrastToggle.addEventListener("click", function() {
     body.classList.toggle("dark");
 });
 
+// for background animation
 function ready(document) {
     document.querySelector(".wrapper").append("<ul class='circles'><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>");
 };
@@ -279,7 +281,7 @@ highScoreForm.addEventListener("submit", function(e) {
     userInput.value = "";
 });
 
-localStorage.setItem("High Scores", JSON.stringify(highScoresArray));
+// localStorage.setItem("High Scores", JSON.stringify(highScoresArray));
 var data = JSON.parse(localStorage.getItem("High Scores"));
 
 data.forEach(function(highscore) {
