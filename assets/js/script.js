@@ -268,7 +268,7 @@ var highScoresArray = []; //creates empty array for each score to be added to
 
 var liMaker = function(text) {
     var li = document.createElement("li");
-    li.textContent = text + " " + score + "%";
+    li.textContent = data;
     highScoreList.appendChild(li);
 };
 
