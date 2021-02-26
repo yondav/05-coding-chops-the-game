@@ -276,7 +276,7 @@ Results Page
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    max-width: 100%;
 }
 
 #high-score-input label {
@@ -290,6 +290,7 @@ Results Page
     flex-grow: 1;
     padding: .5rem;
     height: 3rem;
+    width: 30vw;
     border-radius: 5px;
     border: 1px solid var(--clr-primary-dark);
     box-shadow: 0 0 3px 0 var(--clr-box-shadow);
