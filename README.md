@@ -10,10 +10,6 @@ https://yondav.github.io/05-coding-chops-the-game/
 ![coding chops demo](./assets/readme/start-questions.gif)
 ![coding chops demo](./assets/readme/results-high-score.gif)
 ![lighthouse report](./assets/readme/lighthouse-report.png)
-<!-- gifs and screenshots here -->
-<!-- gifs and screenshots here -->
-<!-- gifs and screenshots here -->
-<!-- gifs and screenshots here -->
 
 ## Gameplay
 

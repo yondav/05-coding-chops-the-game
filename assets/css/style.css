@@ -288,11 +288,13 @@ Results Page
 
 #high-score-input input {
     flex-grow: 1;
+    padding: .5rem;
     height: 3rem;
     border-radius: 5px;
     border: 1px solid var(--clr-primary-dark);
     box-shadow: 0 0 3px 0 var(--clr-box-shadow);
     font-family: var(--fnt-primary);
+    font-size: 1.6rem;
 }
 
 #high-score-input input:active,
