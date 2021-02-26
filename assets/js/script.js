@@ -97,7 +97,7 @@ var questions = [
         "msgAlert('Hello DataFlair!');", 
         "alert('Hellow DataFlair');",
     ],
-    correctAnswer: 3
+    correctAnswer: 1
 },
 {
     id: 10,
@@ -139,6 +139,10 @@ var body = document.querySelector("body");
 contrastToggle.addEventListener("click", function() {
     body.classList.toggle("dark");
 });
+
+function ready(document) {
+    document.querySelector(".wrapper").append("<ul class='circles'><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>");
+};
 
 function startGame() {
     pageChangeOne();
@@ -281,14 +285,5 @@ var data = JSON.parse(localStorage.getItem("High Scores"));
 data.forEach(function(highscore) {
     liMaker(highscore);
 });
-
-// var highScores;
-
-// if(localStorage.getItem("High Scores")) {
-//     highScores = JSON.parse(localStorage.getItem("High Scores"));
-// }
-// else {
-//     highScores = [];
-// }
 
 start.addEventListener("click", startGame);
