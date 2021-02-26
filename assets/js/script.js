@@ -253,7 +253,6 @@ nextBtn.addEventListener('click', function() {
         setTimeout(function() {
         result.textContent = score + "%";
         localStorage.removeItem("selectedAnswer");
-        // localStorage.clear();
         setNextQuestion(currentQuestion++);
     },600);
 });
@@ -284,13 +283,13 @@ highScoreForm.addEventListener("submit", function(e) {
 
     localStorage.setItem("High Scores", JSON.stringify(highScoresArray));
     // liMaker(userInput.value);
-    myFunction();
+    dataParse();
     userInput.value = "";
 });
 
-myFunction();
+dataParse();
 
-function myFunction() {
+function dataParse() {
 var data = JSON.parse(localStorage.getItem("High Scores"))||[];
 
 highScoreList.innerHTML = "";
@@ -301,9 +300,10 @@ for(let i=0; i< data.length;i++){
             var temp = data[i]
             data[i] = data[j]
             data[j] = temp
-        }
-    }
-}
+        };
+    };
+};
+
 data.forEach(function(highscore) {
     liMaker(highscore);
 });
