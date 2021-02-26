@@ -140,9 +140,6 @@ contrastToggle.addEventListener("click", function() {
     body.classList.toggle("dark");
 });
 
-
-
-
 function startGame() {
     pageChangeOne();
     score = 0;
@@ -165,20 +162,24 @@ function pageChangeOne() {
     });
 };
 
+function pageChangeTwo(){
+    container.forEach(function(containers) {
+        if(containers.classList.contains("two")) {
+            containers.classList.add("hide");
+        };
+        if(containers.classList.contains("three")) {
+            containers.classList.remove("hide");
+        };
+    });
+};
+
 function startTimer() {
     timer = setInterval(function() {
         timerCount--;
         secondsLeft.textContent = timerCount;
-        if (timerCount === 0 || questionCount === questions.length + 1) {
+        if (timerCount === 0 || questionCount > questions.length) {
             clearInterval(timer);
-            container.forEach(function(containers) {
-                if(containers.classList.contains("two")) {
-                    containers.classList.add("hide");
-                };
-                if(containers.classList.contains("three")) {
-                    containers.classList.remove("hide");
-                };
-            });
+            pageChangeTwo();
         };
         if (timerCount <= 10) {
             secondsLeft.style.color = "#ff8f8f";
@@ -201,7 +202,12 @@ function showQuestion(question) {
 
 function setNextQuestion() {
     resetState();
-    showQuestion(randomQuestion[currentQuestion]);
+    if (questionCount < questions.length) {
+        showQuestion(randomQuestion[currentQuestion]);
+    }
+    else {
+        pageChangeTwo();
+    }
 };
 
 function resetState() {
@@ -240,7 +246,8 @@ nextBtn.addEventListener('click', function() {
     };
         setTimeout(function() {
         result.textContent = score + "%";
-        localStorage.clear();
+        localStorage.removeItem("selectedAnswer");
+        // localStorage.clear();
         setNextQuestion(currentQuestion++);
     },600);
 });
@@ -262,7 +269,7 @@ var liMaker = function(text) {
 highScoreForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    highScoresArray.push(userInput.value);
+    highScoresArray.push(userInput.value + " " + score + "%");
     localStorage.setItem("High Scores", JSON.stringify(highScoresArray));
     liMaker(userInput.value);
     userInput.value = "";
