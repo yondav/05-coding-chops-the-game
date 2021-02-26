@@ -113,7 +113,8 @@ nav .header-logo:hover {
 }
   
 #contrast {
-    width: 3%;
+    width: 2%;
+    align-self: center;
     border-radius: 50%;
     transition: all .2s ease-in-out;
 }
