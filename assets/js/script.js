@@ -277,7 +277,7 @@ function gameEndMessage() {
     if (score >= 50 && score < 70) {
         resultsMsg.textContent = "Keep It Up!"
     }
-    else {
+    if (score < 50) {
         resultsMsg.textContent = "Better Luck Next Time"
     }
 }
