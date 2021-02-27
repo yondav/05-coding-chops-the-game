@@ -177,6 +177,7 @@ function pageChangeTwo(){
             containers.classList.remove("hide");
         };
     });
+    gameEndMessage();
 };
 
 function startTimer() {
@@ -263,7 +264,23 @@ var userInput = document.querySelector(".name-input"); //grabs input field
 var submitBtn = document.querySelector(".submit"); // grabs submit button
 var highScoreForm = document.getElementById("high-score-input"); //grabs entire form
 var highScoreList = document.getElementById("high-score-list"); //grabs empty ul
+var resultsMsg = document.querySelector(".results-msg");
 var highScoresArray = JSON.parse(localStorage.getItem("High Scores"))|| [] ; //creates empty array for each score to be added to
+
+function gameEndMessage() {
+    if (score === 100) {
+        resultsMsg.textContent = "Perfect Score!";
+    }
+    if (score >= 70 && score < 100) {
+        resultsMsg.textContent = "Great Work!";
+    }
+    if (score >= 50 && score < 70) {
+        resultsMsg.textContent = "Keep It Up!"
+    }
+    else {
+        resultsMsg.textContent = "Better Luck Next Time"
+    }
+}
 
 var liMaker = function(text) {
     console.log(text)
@@ -275,14 +292,12 @@ var liMaker = function(text) {
 highScoreForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    // highScoresArray.push(userInput.value + " " + score + "%");
     highScoresArray.push({
         user: userInput.value,
         score: score
     });
 
     localStorage.setItem("High Scores", JSON.stringify(highScoresArray));
-    // liMaker(userInput.value);
     dataParse();
     userInput.value = "";
 });
@@ -290,13 +305,13 @@ highScoreForm.addEventListener("submit", function(e) {
 dataParse();
 
 function dataParse() {
-var data = JSON.parse(localStorage.getItem("High Scores"))||[];
+var data = JSON.parse(localStorage.getItem("High Scores")) || [];
 
 highScoreList.innerHTML = "";
 
-for(let i=0; i< data.length;i++){
-    for(j=0;j<data.length;j++){
-        if( data[i].score > data[j].score){
+for(let i=0; i< data.length; i++) {
+    for(j=0; j<data.length; j++) {
+        if ( data[i].score > data[j].score){
             var temp = data[i]
             data[i] = data[j]
             data[j] = temp
