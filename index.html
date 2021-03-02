@@ -1,113 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="Description" content="Test your coding chops and beat the high score!">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="Description"
+      content="Test your coding chops and beat the high score!"
+    />
     <title>Coding Chops The Game</title>
-    <link rel="shortcut icon" href="./assets/images/fav.svg" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/background.css">
-</head>
+    <link
+      rel="shortcut icon"
+      href="./assets/images/fav.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/background.css" />
+  </head>
 
-<body class="">
+  <body class="">
     <main>
-        <header>
-            <nav>
-                <a href="index.html" class="header-logo">
-                    <span>Coding Chops</span>
-                    <div class="underline"></div>
-                </a>
-                <img id="contrast" src="./assets/images/toggle.svg" alt="day/night view">
-            </nav>
-        </header>
-        <div class="wrapper">
-
-            <!-- Start Page -->
-            <div class="container one">   
-                <div class="start-container">
-                    <h1>Coding Chops</h1>
-                    <h2>The Game</h2>
-                    <div class="underline"></div>
-                    <p>Test your coding chops and beat the high score!</p>
-                    <button id="start-btn" class="btn">Start</button>
-                </div>
-            </div>
-            <!-- end of start page -->
-
-            <!-- questions card -->
-            <div class="container two hide">
-                <div class="status-bar">
-                    <h2>Coding Chops</h2>
-                    <div class="underline"></div>
-                    <div class="status-flex">
-                    <div>
-                        <p>score</p>
-                        <span class="score"></span>
-                    </div>
-                    <div>
-                        <p>time</p>
-                        <span class="time">60</span>
-                    </div>
-                    </div>
-                </div>
-                <span class="question-number">01</span>
-                <!-- question content -->
-                <div id="question-container">
-                    <!-- question -->
-                    <div id="question">What is JavaScript Code called by using?</div>
-                    <!-- answers -->
-                    <div id="answer-buttons" class="btn-container">
-                        <button data-choice="0" class="btn answer-btn choice-a">RMI</button>
-                        <button data-choice="1" class="btn answer-btn choice-b">Triggering Event</button>
-                        <button data-choice="2" class="btn answer-btn choice-c">Preprocessor</button>
-                        <button data-choice="3" class="btn answer-btn choice-d">Function/Method</button>
-                    </div>
-                    <button class="btn next-btn">Next</button>
-                </div>
-            </div>
-            <!-- end of questions card -->
-
-            <!-- results page -->
-            <div class="container three hide">
-                <div class="result">100%</div>
-                <h1 class="results-msg">Great Work!</h1>
-                <h3>log your score below</h3>
-                <div class="underline"></div>
-                <form id="high-score-input" method="POST">
-                    <label for="user">Username:</label>
-                    <div class="form-flex">
-                        <input type="text" placeholder="ex. yondav" class="name-input">
-                        <input type="submit" value="submit" class="submit .btn">
-                    </div>
-                </form>
-                <ul id="high-score-list"></ul>
-            </div>
-            <ul class="shapes">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-             </ul>
+      <header>
+        <nav>
+          <a href="index.html" class="header-logo">
+            <span>Coding Chops</span>
+            <div class="underline"></div>
+          </a>
+          <img
+            id="contrast"
+            src="./assets/images/toggle.svg"
+            alt="day/night view"
+          />
+        </nav>
+      </header>
+      <div class="wrapper">
+        <!-- Start Page -->
+        <div class="container one">
+          <div class="start-container">
+            <h1>Coding Chops</h1>
+            <h2>The Game</h2>
+            <div class="underline"></div>
+            <p>Test your coding chops and beat the high score!</p>
+            <button id="start-btn" class="btn">Start</button>
+          </div>
         </div>
+        <!-- end of start page -->
+
+        <!-- questions card -->
+        <div class="container two hide">
+          <div class="status-bar">
+            <h2>Coding Chops</h2>
+            <div class="underline"></div>
+            <div class="status-flex">
+              <div>
+                <p>score</p>
+                <span class="score"></span>
+              </div>
+              <div>
+                <p>time</p>
+                <span class="time">60</span>
+              </div>
+            </div>
+          </div>
+          <span class="question-number">01</span>
+          <!-- question content -->
+          <div id="question-container">
+            <!-- question -->
+            <div id="question">What is JavaScript Code called by using?</div>
+            <!-- answers -->
+            <div id="answer-buttons" class="btn-container">
+              <button data-choice="0" class="btn answer-btn choice-a">
+                RMI
+              </button>
+              <button data-choice="1" class="btn answer-btn choice-b">
+                Triggering Event
+              </button>
+              <button data-choice="2" class="btn answer-btn choice-c">
+                Preprocessor
+              </button>
+              <button data-choice="3" class="btn answer-btn choice-d">
+                Function/Method
+              </button>
+            </div>
+            <button class="btn next-btn">Next</button>
+          </div>
+        </div>
+        <!-- end of questions card -->
+
+        <!-- results page -->
+        <div class="container three hide">
+          <div class="result">100%</div>
+          <h1 class="results-msg">Great Work!</h1>
+          <h3>log your score below</h3>
+          <div class="underline"></div>
+          <form id="high-score-input" method="POST">
+            <label for="user">Username:</label>
+            <div class="form-flex">
+              <input type="text" placeholder="ex. yondav" class="name-input" />
+              <input type="submit" value="submit" class="submit .btn" />
+            </div>
+          </form>
+          <ul id="high-score-list"></ul>
+        </div>
+        <ul class="shapes">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
     </main>
-    <script src="./assets/js/script.js"></script>        
-</body>
+    <audio src="./assets/sounds/correct-sound.wav" id="correct-sound"></audio>
+    <audio
+      src="./assets/sounds/incorrect-sound.wav"
+      id="incorrect-sound"
+    ></audio>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
